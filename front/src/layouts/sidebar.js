@@ -31,8 +31,8 @@ class Sidebar extends Component {
                 </div>
                 <ul className="list-unstyled">
                     <li><Link to="/"><i className="fa fa-home" />Dashboard</Link></li>
-                    <li><Link to="/add"><i className="fa fa-home" />Add Widget</Link></li>
-                    <li><Link to="/settings"><i className="fa fa-home" />Settings</Link></li>
+                    <li><Link to="/add"><i className="fa fa-plus" />Add Widget</Link></li>
+                    <li><Link to="/settings"><i className="fa fa-user" />Settings</Link></li>
                 </ul>
             </nav>
         );

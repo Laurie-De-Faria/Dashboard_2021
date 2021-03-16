@@ -28,12 +28,9 @@ export class UsersService {
         return this.userRepository.findOne({ where: { mail: mail } });
     }
 
-    // addUser(user): Promise<any> {
-    //     return new Promise(resolve => {
-    //         this.users.push(user);
-    //         resolve(this.users);
-    //     });
-    // }
+    async addUser(user : User): Promise<User> {
+        return this.userRepository.save(user);
+    }
 
     // deleteUser(userId): Promise<any> {
     //     const id = Number(userId);
