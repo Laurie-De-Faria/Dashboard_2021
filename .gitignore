@@ -1,0 +1,9 @@
+# Temporary
+*~
+*#
+*/dist/*
+
+# Folder
+node_modules/
+package-lock.json
+ignore/
