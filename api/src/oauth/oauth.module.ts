@@ -11,6 +11,7 @@ import { oauthProviders } from './oauth.providers';
     providers: [
         ...oauthProviders,
         OauthService
-    ]
+    ],
+    exports: [OauthService]
 })
 export class OauthModule {}

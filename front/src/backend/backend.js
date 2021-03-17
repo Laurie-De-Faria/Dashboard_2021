@@ -1,3 +1,5 @@
+import { userId } from '../constants/userInfos';
+
 async function callAPI(url, init={}) {
     init = Object.assign(init, {
         headers: {
@@ -27,4 +29,8 @@ export async function addUser(username, email, password) {
 
 export async function loginService() {
     return await callAPI(`${process.env.REACT_APP_API_URL}/oauth/connection`);
+}
+
+export async function getEmails(nbrEmails) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/emails/${userId}/${nbrEmails}`);
 }

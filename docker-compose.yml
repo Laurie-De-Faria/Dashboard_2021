@@ -15,7 +15,6 @@ services:
       MYSQL_ROOT_PASSWORD: passroot
       MYSQL_DATABASE: dashboard
 
-  # phpmyadmin panel
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:4.8
     restart: always
@@ -25,38 +24,6 @@ services:
     - 8890:80
     environment:
         PMA_HOST: mysql
-
-  # back:
-  #   build:
-  #     dockerfile: ./Dockerfile
-  #     context: ./back
-  #   networks:
-  #     - dashboard_network
-  #     - mysql_network
-  #   tty: true
-  #   volumes:
-  #     - ./back/:/src
-  #   env_file:
-  #     - ./back/.env
-
-  # back-about:
-  #   image: node:14-alpine3.12
-  #   networks:
-  #     - dashboard_network
-  #   command: "node /index.js"
-  #   volumes:
-  #     - ./back/about/index.js:/index.js
-
-  # back-nginx:
-  #   image: nginx:1.19.6-alpine
-  #   ports:
-  #     - "8080:80"
-  #   networks:
-  #     - dashboard_network
-  #   volumes:
-  #     - nginx-back-data:/etc/nginx
-  #     - ./nginx-back/nginx.conf:/etc/nginx/nginx.conf
-  #     - ./nginx-back/default.conf:/etc/nginx/conf.d/default.conf
 
   api:
     build: "api"
@@ -89,21 +56,6 @@ services:
       MICROSOFT_APP_SECRETVALUE: "Bs2~nV1cos0b_K5fl737y9cG-Gs_Cm_cYs"
     volumes:
       - ./front/:/app
-
-  # front-nginx:
-  #   image: nginx:1.19.6-alpine
-  #   ports:
-  #     - "8081:80"
-  #   networks:
-  #     - dashboard_network
-  #   volumes:
-  #     - nginx-front-data:/etc/nginx
-  #     - ./nginx-front/nginx.conf:/etc/nginx/nginx.conf
-  #     - ./nginx-front/default.conf:/etc/nginx/conf.d/default.conf
-
-volumes:
-  nginx-front-data:
-  nginx-back-data:
 
 networks:
   dashboard_network:

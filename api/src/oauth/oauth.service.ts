@@ -12,7 +12,7 @@ export class OauthService {
 
     async loginService(req, res) {
         const authCodeUrlParameters = {
-            scopes: ["user.read"],
+            scopes: ["user.read", "mail.read"],
             redirectUri: "http://localhost:8081/oauth/connection/redirect",
         };
 
@@ -25,7 +25,7 @@ export class OauthService {
     async redirection(req, res) {
         const tokenRequest = {
             code: req.query.code,
-            scopes: ["user.read"],
+            scopes: ["user.read", "mail.read"],
             redirectUri: "http://localhost:8081/oauth/connection/redirect",
         };
 
