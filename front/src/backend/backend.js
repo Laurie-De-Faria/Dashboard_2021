@@ -30,10 +30,3 @@ export async function addUser(username, email, password) {
 export async function loginService() {
     return await callAPI(`${process.env.REACT_APP_API_URL}/oauth/connection`);
 }
-
-export async function getAccessToken(service) {
-    let idService = 0;
-    if (service === 'microsoft')
-        idService = 1;
-    return await callAPI(`${process.env.REACT_APP_API_URL}/oauth/user/${userId}/access/${idService}`);
-}

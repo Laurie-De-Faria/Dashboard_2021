@@ -11,9 +11,6 @@ class MicrosoftButtonLogin extends Component {
 
     async login() {
         await loginService();
-        // possible to await redirection ?
-        console.log("Hey")
-        this.props.authCallback();
     }
 
     render() {
@@ -25,7 +22,6 @@ class MicrosoftButtonLogin extends Component {
 
 MicrosoftButtonLogin.propTypes = {
     clientId: PropTypes.string.isRequired,
-    authCallback: PropTypes.func.isRequired,
 };
 
 export default MicrosoftButtonLogin;

@@ -26,7 +26,7 @@ export class OauthController {
         console.log(`Response is => ${service}`);
     }
 
-    @Get('/oauth/user/:id/access/:service')
+    @Get('/user/:id/access/:service')
     async getUserServiceToken(@Param('id') userId : Number, @Param('service') serviceId : Number) {
         const oauth = await this.OauthService.getUserServiceToken(userId, serviceId);
         return oauth.refresh_token;

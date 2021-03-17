@@ -30,6 +30,14 @@ CREATE TABLE IF NOT EXIST `user_tokens` (
   `expires_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXIST `services` (
+  `id` int(11) NOT NULL,
+  `fk_user_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `widget_id` int(11) NOT NULL,
+  `is_active` BIT
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 

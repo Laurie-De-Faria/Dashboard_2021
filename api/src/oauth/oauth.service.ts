@@ -7,7 +7,7 @@ import { cca } from './oauth.dto';
 export class OauthService {
     constructor(
         @Inject('OAUTH_REPOSITORY')
-        private userRepository: Repository<Oauth>,
+        private oauthRepository: Repository<Oauth>,
     ) {}
 
     async loginService(req, res) {
@@ -47,10 +47,10 @@ export class OauthService {
     }
 
     async addService(oauth : Oauth): Promise<Oauth> {
-        return this.userRepository.save(oauth);
+        return this.oauthRepository.save(oauth);
     }
 
     async getUserServiceToken(userId : Number, serviceId : Number): Promise<Oauth> {
-        return this.userRepository.findOne({ where: { fk_user_id: userId, type: serviceId } });
+        return this.oauthRepository.findOne({ where: { fk_user_id: userId, type: serviceId } });
     }
 }
