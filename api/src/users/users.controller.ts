@@ -25,13 +25,6 @@ export class UsersController {
 
     @Post('/add')
     async addUser(@Body() user : User) {
-        console.log(`Request => ${user}`);
         return await this.usersService.addUser(user);
     }
-    
-    // @Delete()
-    // async deleteUser(@Query() query) {
-    //     const users = await this.usersService.deleteUser(query.userId);
-    //     return users;
-    // }
 }

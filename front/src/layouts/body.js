@@ -15,7 +15,7 @@ export default class Body extends Component {
                     <div className="content-inner">
                         <header className="page-header">
                             <Container fluid>
-                                <h2 className="no-margin-bottom">Webpanel Template Header</h2>
+                                <h2 className="no-margin-bottom">Dashboard</h2>
                             </Container>
                         </header>
                         <section>

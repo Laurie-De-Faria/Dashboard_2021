@@ -85,6 +85,8 @@ services:
     tty: true
     environment:
       REACT_APP_API_URL: "http://localhost:8081"
+      MICROSOFT_APP_ID: "0e63e88d-d336-4428-8782-2b7d7dd386e7"
+      MICROSOFT_APP_SECRETVALUE: "Bs2~nV1cos0b_K5fl737y9cG-Gs_Cm_cYs"
     volumes:
       - ./front/:/app
 

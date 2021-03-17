@@ -2,6 +2,7 @@
 let userId;
 let userEmail;
 let userName;
+let accessToken;
 
 export function setUserInfos(username, email, id) {
     userEmail = `${email}`;
@@ -13,6 +14,11 @@ export function resetUserInfos() {
     userEmail = '';
     userId = '';
     userName = '';
+    accessToken = '';
 }
 
-export { userId, userEmail, userName };
+export function setAccessToken(accessToken) {
+    accessToken = `${accessToken}`;
+}
+
+export { userId, userEmail, userName, accessToken };
