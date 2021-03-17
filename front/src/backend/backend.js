@@ -1,5 +1,3 @@
-import { userId } from "../constants/userInfos";
-
 async function callAPI(url, init={}) {
     init = Object.assign(init, {
         headers: {

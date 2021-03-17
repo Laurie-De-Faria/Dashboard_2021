@@ -2,15 +2,13 @@
 import React, { Component } from 'react';
 // import MicrosoftLogin from 'react-microsoft-login';
 import MicrosoftButtonLogin from '../../components/Microsoft/MicrosoftButtonLogin';
-import { setAccessToken } from '../../constants/userInfos';
-import { getAccessToken } from '../../backend/backend';
 
 export default class SettingsPage extends Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        // this.authHandler = this.authHandler.bind(this);
-    }
+    //     this.authHandler = this.authHandler.bind(this);
+    // }
 
     // authHandler(err, data) {
     //     console.log(err, data);

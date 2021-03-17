@@ -22,14 +22,6 @@ CREATE TABLE IF NOT EXIST `oauth` (
   `expires_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXIST `user_tokens` (
-  `fk_user_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `refresh_token` varchar(255) NOT NULL,
-  `expires_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE IF NOT EXIST `services` (
   `id` int(11) NOT NULL,
   `fk_user_id` int(11) NOT NULL,
@@ -44,7 +36,7 @@ ALTER TABLE `user`
 ALTER TABLE `oauth`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `user_tokens`
+ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `user`
@@ -53,7 +45,7 @@ ALTER TABLE `user`
 ALTER TABLE `oauth`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
-ALTER TABLE `user_tokens`
+ALTER TABLE `services`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 COMMIT;
