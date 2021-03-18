@@ -4,6 +4,8 @@ import { getEmails } from '../../../backend/backend';
 
 import Email from './Email';
 
+import './EmailsWidget.css';
+
 class EmailsService extends Component {
     constructor(props) {
         super(props);
@@ -37,8 +39,9 @@ class EmailsService extends Component {
         const { emails } = this.state;
 
         return(
-            <div>
+            <div id='widget' style={{ maxHeight: '550px', maxWidth: '500px'}}>
                 <h1>Your last {this.props.number} mails:</h1>
+                {/* <div className='listEmails'> */}
                 <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
                     { emails }
                 </div>
