@@ -1,0 +1,18 @@
+#event {
+    border: 1px solid black;
+}
+
+#event h1 {
+    font-size: 14px;
+    font-style: bold;
+}
+
+#event h2 {
+    font-size: 12px;
+    font-style: normal;
+}
+
+#event content {
+    font-size: 12px;
+    font-style: normal;
+}

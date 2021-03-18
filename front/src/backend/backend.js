@@ -35,10 +35,14 @@ export async function getEmails(nbrEmails) {
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/emails/${userId}/${nbrEmails}`);
 }
 
+export async function getCalendar(startDate, endDate) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/calendar/${userId}/${startDate}/${endDate}`);
+}
+
 export async function getSimilarFilms(filmId) {
-    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/similar/${userId}/${filmId}`);
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/similar/${filmId}`);
 }
 
 export async function getVideosOfFilm(filmId) {
-    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/videos/${userId}/${filmId}`);
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/videos/${filmId}`);
 }

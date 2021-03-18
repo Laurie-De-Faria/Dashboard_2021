@@ -12,7 +12,7 @@ class Film extends Component {
                     {
                         (this.props.image === undefined ? null : <img src={this.props.image} alt={this.props.title} />)
                     }
-                    <h2>Release date: { this.props.date }</h2>
+                    { (this.props.date === undefined ? null : <h2>Release date: { this.props.date }</h2>) }
                     { (this.props.realisator === undefined ? null : <h2>By: {this.props.realisator} (realisator) and {this.props.scenarist} (scenarist)</h2>) }
                     { (this.props.vote === undefined ? null : <h2>Vote: {this.props.vote}/10</h2>) }
                 </div>
@@ -35,7 +35,7 @@ class Film extends Component {
 
 Film.propTypes = {
     title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    date: PropTypes.string,
     realisator: PropTypes.string,
     scenarist: PropTypes.string,
     actors: PropTypes.string,

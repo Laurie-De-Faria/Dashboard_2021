@@ -17,14 +17,14 @@ export class ServicesController {
         return events;
     }
 
-    @Get('/cinema/similar/:userId/:movieId')
-    async similarMovies(@Param('userId') userId : Number, @Param('movieId') movieId : Number) {
+    @Get('/cinema/similar/:movieId')
+    async similarMovies(@Param('movieId') movieId : Number) {
         const movies = await this.servicesService.getSimilarMovies(movieId);
         return movies;
     }
 
-    @Get('/cinema/videos/:userId/:movieId')
-    async videoMovies(@Param('userId') userId : Number, @Param('movieId') movieId : Number) {
+    @Get('/cinema/videos/:movieId')
+    async videoMovies(@Param('movieId') movieId : Number) {
         const movies = await this.servicesService.getVideosOfMovie(movieId);
         return movies;
     }
