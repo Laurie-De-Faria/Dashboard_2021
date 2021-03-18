@@ -17,6 +17,6 @@ export class Services {
   @Column()
   is_active: number;
 
-  @Column()
-  data: JSON;
+  @Column('json')
+  data: any;
 }

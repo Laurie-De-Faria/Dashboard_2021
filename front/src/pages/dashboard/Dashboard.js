@@ -1,30 +1,20 @@
 // React Core
 import React, { Component } from 'react';
-import { getEmails } from '../../backend/backend';
+import EmailsService from '../../components/Microsoft/EmailsWidget/EmailsWidget';
 
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            emails: {}
+            widgets: {}
         };
     }
 
-    async componentDidMount() {
-        const newEmails = getEmails();
-
-        this.setState({
-            emails: newEmails,
-        });
-    }
-
     render() {
-        const { emails } = this.state;
-        console.log(emails);
         return (
             <div>
-                <h1>Mails</h1>
+                <EmailsService number={23}/>
             </div>
         );
     }

@@ -32,5 +32,6 @@ export async function loginService() {
 }
 
 export async function getEmails(nbrEmails) {
+    console.log(`NUMBER => ${nbrEmails}`);
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/emails/${userId}/${nbrEmails}`);
 }

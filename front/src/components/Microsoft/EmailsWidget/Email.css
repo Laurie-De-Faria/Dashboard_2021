@@ -1,0 +1,18 @@
+#email {
+    border: 1px solid black;
+}
+
+#email h1 {
+    font-size: 14px;
+    font-style: bold;
+}
+
+#email h2 {
+    font-size: 12px;
+    font-style: normal;
+}
+
+#email content {
+    font-size: 12px;
+    font-style: normal;
+}
