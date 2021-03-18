@@ -41,6 +41,9 @@ services:
       DATABASE_ROOT_PASSWORD: 'passroot'
       DATABASE_HOST: 'mysql'
       DATABASE_PORT: 3306
+      CINEMA_API_KEY: '4656162a18a35da5085d20d2c1393c10'
+      MICROSOFT_APP_ID: "0e63e88d-d336-4428-8782-2b7d7dd386e7"
+      MICROSOFT_APP_SECRETVALUE: "Bs2~nV1cos0b_K5fl737y9cG-Gs_Cm_cYs"
 
   front:
     build: "front"

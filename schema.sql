@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXIST `services` (
   `fk_user_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
   `widget_id` int(11) NOT NULL,
-  `is_active` BIT
+  `is_active` BIT,
+  `data` JSON
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `user`

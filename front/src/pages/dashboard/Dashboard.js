@@ -21,9 +21,10 @@ export default class Dashboard extends Component {
 
     render() {
         const { emails } = this.state;
+        console.log(emails);
         return (
             <div>
-                { emails }
+                <h1>Mails</h1>
             </div>
         );
     }
