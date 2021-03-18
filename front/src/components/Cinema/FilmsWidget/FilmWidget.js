@@ -40,7 +40,7 @@ class FilmsService extends Component {
 
         return(
             <div id='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
-                <h1>Similar films of { this.props.titleFilm } :</h1>
+                <h1>Similar films of "{ this.props.titleFilm }":</h1>
                 {/* <div className='listFilms'> */}
                 <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
                     { films }

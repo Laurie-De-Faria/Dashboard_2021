@@ -38,3 +38,7 @@ export async function getEmails(nbrEmails) {
 export async function getSimilarFilms(filmId) {
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/similar/${userId}/${filmId}`);
 }
+
+export async function getVideosOfFilm(filmId) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/videos/${userId}/${filmId}`);
+}

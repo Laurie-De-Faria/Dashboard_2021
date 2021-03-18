@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import EmailsService from '../../components/Microsoft/EmailsWidget/EmailsWidget';
 import FilmsService from '../../components/Cinema/FilmsWidget/FilmWidget';
+import VideosService from '../../components/Cinema/VideosWidget/VideosWidget';
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -20,6 +21,9 @@ export default class Dashboard extends Component {
                 </div>
                 <div>
                     <FilmsService filmId={89} titleFilm="Indiana Jones and the last crusade"/>
+                </div>
+                <div>
+                    <VideosService filmId={89} titleFilm="Indiana Jones and the last crusade"/>
                 </div>
             </div>
         );
