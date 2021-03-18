@@ -1,6 +1,7 @@
 // React Core
 import React, { Component } from 'react';
 import EmailsService from '../../components/Microsoft/EmailsWidget/EmailsWidget';
+import FilmsService from '../../components/Cinema/FilmsWidget/FilmWidget';
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -13,8 +14,13 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div>
-                <EmailsService number={23}/>
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div>
+                    <EmailsService number={23}/>
+                </div>
+                <div>
+                    <FilmsService filmId={89} titleFilm="Indiana Jones and the last crusade"/>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,18 @@
+#film {
+    border: 1px solid black;
+}
+
+#film h1 {
+    font-size: 14px;
+    font-style: bold;
+}
+
+#film h2 {
+    font-size: 12px;
+    font-style: normal;
+}
+
+#film content {
+    font-size: 12px;
+    font-style: normal;
+}
