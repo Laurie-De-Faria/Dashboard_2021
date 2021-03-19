@@ -46,3 +46,7 @@ export async function getSimilarFilms(filmId) {
 export async function getVideosOfFilm(filmId) {
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/videos/${filmId}`);
 }
+
+export async function getUserWidgets(userId) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/widgets/${userId}`);
+}

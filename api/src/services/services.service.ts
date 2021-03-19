@@ -17,6 +17,10 @@ export class ServicesService {
         return this.servicesRepository.save(widget);
     }
 
+    async getWidgets(userId : Number): Promise<Services[]> {
+        return this.servicesRepository.find({ where: { fk_user_id: userId } });
+    }
+
     /// --- WIDGETS MICROSFT --- ///
     // Widget display last n mails order by date received + just field subject, from and date to received
     async getOauthdata(userId, serviceId) {

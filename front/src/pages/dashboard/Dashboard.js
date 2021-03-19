@@ -1,37 +1,63 @@
 // React Core
 import React, { Component } from 'react';
-import EmailsService from '../../components/Microsoft/EmailsWidget/EmailsWidget';
-import EventsService from '../../components/Microsoft/CalendarWidget/EventsWidget';
-import FilmsService from '../../components/Cinema/FilmsWidget/FilmWidget';
-import VideosService from '../../components/Cinema/VideosWidget/VideosWidget';
+
+import { getUserWidgets } from '../../backend/backend';
+import { userId } from '../../constants/userInfos';
+import { setupOutlookWidget } from '../../components/Microsoft/MicrosoftSetupWidgets';
+import { setupCinemaWidget } from '../../components/Cinema/CinemaSetupWidgets';
 
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            widgets: {}
+            listWidgets: []
         };
+        this.createWidgetsList = this.createWidgetsList.bind(this);
+        this.getWidget = this.getWidget.bind(this);
+    }
+
+    getWidget(serviceId, widgetId, isActive, data) {
+        if (isActive !== 1) {
+            return null;
+        }
+        switch(serviceId) {
+            case 1:
+                return setupOutlookWidget(widgetId, data);
+            case 2:
+                return setupCinemaWidget(widgetId, data);
+            default:
+                return null;
+        }
+    }
+
+    createWidgetsList(widgets) {
+        let list = [];
+
+        console.log(JSON.stringify(widgets))
+        if (widgets === undefined || widgets === {})
+            return [];
+        
+        list = widgets.map((widget) => this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data))
+        return list;
+    }
+
+    async componentDidMount() {
+        const response = await getUserWidgets(userId);
+        const widgets = this.createWidgetsList(response);
+
+        console.log(widgets);
+
+        this.setState({
+            listWidgets: (widgets === [] || widgets === undefined ? [] : widgets)
+        });
     }
 
     render() {
+        const { listWidgets } = this.state;
         return (
             <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', alignContent: 'space-between' }}>
-                <div>
-                    <EmailsService number={23}/>
-                </div>
-                <div>
-                    <FilmsService filmId={89} titleFilm="Indiana Jones and the last crusade"/>
-                </div>
-                <div>
-                    <VideosService filmId={89} titleFilm="Indiana Jones and the last crusade"/>
-                </div>
-                <div>
-                    <EventsService startDate='2021-01-01T19:00:00-08:00' endDate='2021-03-27T19:00:00-08:00'/>
-                </div>
-                <div>
-                    <VideosService filmId={12} titleFilm="Nemo"/>
-                </div>
+                { listWidgets }
             </div>
         );
     }

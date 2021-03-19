@@ -34,4 +34,10 @@ export class ServicesController {
         const movies = await this.servicesService.getPopularMovies();
         return movies;
     }
+
+    @Get('/widgets/:userId')
+    async getUserWidgets(@Param('userId') userId : Number) {
+        const widgets = await this.servicesService.getWidgets(userId);
+        return widgets;
+    }
 }
