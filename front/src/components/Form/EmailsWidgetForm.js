@@ -44,10 +44,7 @@ class EmailsWidgetForm extends Component {
                 <form>
                     <label>
                         Number of emails to display:
-                        {/* <select value={number} onChange={this.onValueChange}>
-                            { listFilms }
-                        </select> */}
-                        <input style={{width: '150px'}} type="number" value={this.state.number} onChange={this.onValueChange}/>
+                        <input style={{width: '150px'}} type="number" value={number} onChange={this.onValueChange}/>
                     </label>
                     <button type="button" onClick={() => this.submitWidget()}>Add</button>
                 </form>
