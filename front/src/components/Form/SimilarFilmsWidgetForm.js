@@ -60,7 +60,6 @@ class SimilarFilmsWidgetForm extends Component {
             filmId: filmId,
             title: filmTitle
         };
-        console.log(`Send widget => ${JSON.stringify(data)}`);
         addWidget(serviceId, widgetId, data);
     }
 
