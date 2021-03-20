@@ -29,10 +29,13 @@ class LoginForm extends Component {
         this.setState({ formValues: {...formValues, ...newData} });
     }
 
-    async userExist(username) {
+    async userExist(username, password) {
         const jsonData = await getUser(username);
 
         if (!jsonData || jsonData === {} || Object.keys(jsonData) === 0 || jsonData === undefined) {
+            return null;
+        }
+        if (password !== jsonData.password) {
             return null;
         }
         return jsonData;
@@ -42,7 +45,7 @@ class LoginForm extends Component {
         const { setUser } = this.props;
         const { formValues } = this.state;
 
-        const user = await this.userExist(formValues.username);
+        const user = await this.userExist(formValues.username, formValues.password);
 
         if (user) {
             this.setState({ isLoading: true });
