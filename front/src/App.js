@@ -7,9 +7,9 @@ import PrivateRoute from './components/PrivateRoute';
 import _404 from './pages/404';
 import Dashboard from './pages/dashboard/Dashboard';
 import SettingsPage from './pages/settings/Settings';
-import ExamplePage from './pages/example/Example';
 import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/login/RegisterPage';
+import CreateWidgetPage from './pages/CreateWidget/CreateWidget';
 
 class App extends Component {
     constructor(props) {
@@ -58,7 +58,7 @@ class MainPage extends Component {
             <Body>
                 <Switch>
                     <PrivateRoute exact path="/" component={Dashboard} />
-                    <PrivateRoute exact path="/add" component={ExamplePage} />
+                    <PrivateRoute exact path="/add" component={CreateWidgetPage} />
                     <PrivateRoute exact path="/settings" component={SettingsPage} />
                     <PrivateRoute exact path="/register" component={RegisterPage} />
                     <PrivateRoute path="*" component={_404} />

@@ -1,5 +1,6 @@
-import { Controller, Get, Param, Post, Body, Delete, Query, Request, Response} from '@nestjs/common';
+import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { ServicesService } from './services.service';
+import { Services } from './services.entity';
 
 @Controller('services')
 export class ServicesController {
@@ -39,5 +40,10 @@ export class ServicesController {
     async getUserWidgets(@Param('userId') userId : Number) {
         const widgets = await this.servicesService.getWidgets(userId);
         return widgets;
+    }
+
+    @Post('/widgets/add')
+    async addWidget(@Body() widget : Services) {
+        return await this.servicesService.addWidget(widget);
     }
 }

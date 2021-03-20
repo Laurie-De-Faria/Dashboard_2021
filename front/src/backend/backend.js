@@ -50,3 +50,20 @@ export async function getVideosOfFilm(filmId) {
 export async function getUserWidgets(userId) {
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/widgets/${userId}`);
 }
+
+export async function addWidget(serviceId, widgetId, data) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/widgets/add`, {
+        method: 'POST',
+        body: JSON.stringify({
+            fk_user_id: userId,
+            service_id: serviceId,
+            widget_id: widgetId,
+            is_active: 1,
+            data: data,
+        }),
+    })
+}
+
+export async function getPopularFilm() {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/popular`);
+}
