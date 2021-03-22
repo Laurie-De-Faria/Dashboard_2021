@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getEmails } from '../../../backend/backend';
+import { MINUTE_MS } from '../../../constants/time';
 
 import Email from './Email';
 
@@ -14,7 +15,19 @@ class EmailsService extends Component {
             emails: []
         };
         this.createEmailsList = this.createEmailsList.bind(this);
+        this.refresh = this.refresh.bind(this);
+        this.getData = this.getData.bind(this);
     }
+
+    refresh() {
+      const interval = setInterval(() => {
+        console.log('Emails refresh');
+        this.getData();
+      }, MINUTE_MS );
+
+      return () => clearInterval(interval);
+    }
+
 
     createEmailsList(emails) {
         let list = [];
@@ -26,13 +39,18 @@ class EmailsService extends Component {
         return list;
     }
 
-    async componentDidMount() {
+    async getData() {
         const response = await getEmails(this.props.number);
         const emails = this.createEmailsList(response.value);
 
         this.setState({
             emails: (emails === [] || emails === undefined ? [] : emails)
         });
+    }
+
+    async componentDidMount() {
+        await this.getData();
+        this.refresh();
     }
 
     render() {
