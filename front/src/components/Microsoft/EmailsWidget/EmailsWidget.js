@@ -21,13 +21,12 @@ class EmailsService extends Component {
 
     refresh() {
       const interval = setInterval(() => {
-        console.log('Emails refresh');
+        console.log('Update: Emails refresh');
         this.getData();
       }, MINUTE_MS );
 
       return () => clearInterval(interval);
     }
-
 
     createEmailsList(emails) {
         let list = [];

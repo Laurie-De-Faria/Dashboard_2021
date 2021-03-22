@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getCalendar } from '../../../backend/backend';
+import { MINUTE_MS } from '../../../constants/time';
 
 import Event from './Event';
 
@@ -14,6 +15,17 @@ class EventsService extends Component {
             events: []
         };
         this.createEventsList = this.createEventsList.bind(this);
+        this.refresh = this.refresh.bind(this);
+        this.getData = this.getData.bind(this);
+    }
+
+    refresh() {
+        const interval = setInterval(() => {
+          console.log('Update: Calendar events refresh');
+          this.getData();
+        }, MINUTE_MS );
+  
+        return () => clearInterval(interval);
     }
 
     createEventsList(events) {
@@ -26,13 +38,18 @@ class EventsService extends Component {
         return list;
     }
 
-    async componentDidMount() {
+    async getData() {
         const response = await getCalendar(this.props.startDate, this.props.endDate);
         const events = this.createEventsList(response.value);
 
         this.setState({
             events: (events === [] || events === undefined ? [] : events)
         });
+    }
+
+    async componentDidMount() {
+        await this.getData();
+        this.refresh();
     }
 
     render() {

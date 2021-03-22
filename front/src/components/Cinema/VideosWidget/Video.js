@@ -7,7 +7,6 @@ class Video extends Component {
     render() {
         const url = `https://www.youtube.com/embed/${this.props.link}`;
 
-        console.log(`Key of video: ${this.props.link} ||| ${this.props.title}`);
         return(
             <div id='video'>
                 <h1>{ this.props.title }</h1>

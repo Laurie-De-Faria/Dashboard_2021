@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getSimilarFilms } from '../../../backend/backend';
+import { MINUTE_MS } from '../../../constants/time';
 
 import Film from './Film';
 
@@ -14,7 +15,18 @@ class FilmsService extends Component {
             films: []
         };
         this.createFilmsList = this.createFilmsList.bind(this);
+        this.refresh = this.refresh.bind(this);
+        this.getData = this.getData.bind(this);
     }
+
+    refresh() {
+        const interval = setInterval(() => {
+          console.log(`Update: List of similar film of ${this.props.titleFilm} was refresh`);
+          this.getData();
+        }, MINUTE_MS );
+  
+        return () => clearInterval(interval);
+      }
 
     createFilmsList(films) {
         let list = [];
@@ -26,13 +38,18 @@ class FilmsService extends Component {
         return list;
     }
 
-    async componentDidMount() {
+    async getData() {
         const response = await getSimilarFilms(this.props.filmId);
         const films = this.createFilmsList(response.results);
 
         this.setState({
             films: (films === [] || films === undefined ? [] : films)
         });
+    }
+
+    async componentDidMount() {
+        await this.getData();
+        this.refresh();
     }
 
     render() {

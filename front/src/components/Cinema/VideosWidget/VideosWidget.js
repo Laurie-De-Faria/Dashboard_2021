@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getVideosOfFilm } from '../../../backend/backend';
+import { MINUTE_MS } from '../../../constants/time';
 
 import Video from './Video';
 
@@ -14,6 +15,17 @@ class VideosService extends Component {
             videos: []
         };
         this.createVideosList = this.createVideosList.bind(this);
+        this.refresh = this.refresh.bind(this);
+        this.getData = this.getData.bind(this);
+    }
+
+    refresh() {
+        const interval = setInterval(() => {
+          console.log(`Update: Videos of film ${this.props.titleFilm} was refresh`);
+          this.getData();
+        }, MINUTE_MS );
+  
+        return () => clearInterval(interval);
     }
 
     createVideosList(videos) {
@@ -22,17 +34,22 @@ class VideosService extends Component {
         if (videos === undefined || videos === {})
             return [];
         
-        list = videos.map((video) => {console.log(video); return(<Video title={video.name} platform={video.site} link={video.key} type={video.type}/>)})
+        list = videos.map((video) => <Video title={video.name} platform={video.site} link={video.key} type={video.type}/>);
         return list;
     }
 
-    async componentDidMount() {
+    async getData() {
         const response = await getVideosOfFilm(this.props.filmId);
         const videos = this.createVideosList(response.results);
 
         this.setState({
             videos: (videos === [] || videos === undefined ? [] : videos)
         });
+    }
+
+    async componentDidMount() {
+        await this.getData();
+        this.refresh();
     }
 
     render() {
