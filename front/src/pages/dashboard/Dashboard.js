@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
         if (widgets === undefined || widgets === {})
             return [];
         
-        list = widgets.map((widget) => this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data))
+        list = widgets.map((widget) => <div style={{margin: '10px'}}>{this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data)}</div>)
         return list;
     }
 

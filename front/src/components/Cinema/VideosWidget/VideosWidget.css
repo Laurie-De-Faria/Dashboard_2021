@@ -2,6 +2,7 @@
     border: 2px solid black;
     /* max-height: '500px';
     max-width: '500px'; */
+    background-color: floralwhite;
 }
 
 #widget .listVideos {
@@ -9,4 +10,5 @@
     /* max-height: '500px';
     max-width: '500px'; */
     border: 1px solid black;
+    background-color: floralwhite;
 }
