@@ -10,9 +10,10 @@ export class OauthService {
         private oauthRepository: Repository<Oauth>,
     ) {}
 
-    async loginService(req, res) {
+    async loginService(req, res, userId) {
         const authCodeUrlParameters = {
             scopes: ["user.read", "mail.read", "calendars.read"],
+            state: String(userId),
             redirectUri: "http://localhost:8081/oauth/connection/redirect",
         };
 
@@ -34,7 +35,7 @@ export class OauthService {
             res.sendStatus(200);
             this.addService({
                 id: null,
-                fk_user_id: 4,
+                fk_user_id: req.query.state,
                 type: 1,
                 refresh_token: response.accessToken,
                 token: response.idToken,

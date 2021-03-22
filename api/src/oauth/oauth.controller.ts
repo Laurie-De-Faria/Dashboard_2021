@@ -14,9 +14,9 @@ export class OauthController {
     //     return `Hello -> ${value} | END`;
     // }
 
-    @Get('/connection')
-    async loginToService(@Request() req, @Response() res) {
-        const service = await this.OauthService.loginService(req, res);
+    @Get('/:userId/connection')
+    async loginToService(@Request() req, @Response() res, @Param('userId') userId : Number) {
+        const service = await this.OauthService.loginService(req, res, userId);
     }
 
     @Get('/connection/redirect')

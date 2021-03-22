@@ -28,7 +28,7 @@ export async function addUser(username, email, password) {
 }
 
 export async function loginService() {
-    return await callAPI(`${process.env.REACT_APP_API_URL}/oauth/connection`);
+    return await callAPI(`${process.env.REACT_APP_API_URL}/oauth/${userId}/connection`);
 }
 
 export async function getEmails(nbrEmails) {

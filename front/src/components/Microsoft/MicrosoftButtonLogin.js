@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //import { loginService } from '../../backend/backend';
+import { userId } from '../../constants/userInfos';
 
 class MicrosoftButtonLogin extends Component {
-    // constructor(props) {
-    //     super(props);
-
-    //     this.login = this.login.bind(this);
-    // }
-
-    //async login() {
-    //    await loginService();
-    //}
-
     render() {
         return (
-            //<button onClick={() => this.login()}>Sign in with Microsoft</button>
-            <a href={`${process.env.REACT_APP_API_URL}/oauth/connection`} target="blank" noreferrer noopnener>Sign in with Microsoft</a>
+            <a href={`${process.env.REACT_APP_API_URL}/oauth/${userId}/connection`} target="blank" noreferrer noopnener>Sign in with Microsoft</a>
         );
     }
 }
