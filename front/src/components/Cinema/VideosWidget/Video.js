@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './Video.css'
+import '../../../styles/Video.css';
 
 class Video extends Component {
     render() {

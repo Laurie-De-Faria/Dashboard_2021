@@ -17,6 +17,12 @@ export class ServicesService {
         return this.servicesRepository.save(widget);
     }
 
+    async removeWidget(widgetUniqueId : Number) {
+        const id = Number(widgetUniqueId);
+
+        return this.servicesRepository.delete({id: id});
+    }
+
     async getWidgets(userId : Number): Promise<Services[]> {
         return this.servicesRepository.find({ where: { fk_user_id: userId } });
     }

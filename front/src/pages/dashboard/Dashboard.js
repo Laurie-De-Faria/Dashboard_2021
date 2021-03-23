@@ -6,6 +6,8 @@ import { userId } from '../../constants/userInfos';
 import { setupOutlookWidget } from '../../components/Microsoft/MicrosoftSetupWidgets';
 import { setupCinemaWidget } from '../../components/Cinema/CinemaSetupWidgets';
 
+import '../../styles/Dashboard.css';
+
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -17,15 +19,15 @@ export default class Dashboard extends Component {
         this.getWidget = this.getWidget.bind(this);
     }
 
-    getWidget(serviceId, widgetId, isActive, data) {
+    getWidget(serviceId, widgetId, isActive, data, id) {
         if (isActive !== 1) {
             return null;
         }
         switch(serviceId) {
             case 1:
-                return setupOutlookWidget(widgetId, data);
+                return setupOutlookWidget(widgetId, data, id);
             case 2:
-                return setupCinemaWidget(widgetId, data);
+                return setupCinemaWidget(widgetId, data, id);
             default:
                 return null;
         }
@@ -34,19 +36,16 @@ export default class Dashboard extends Component {
     createWidgetsList(widgets) {
         let list = [];
 
-        console.log(JSON.stringify(widgets))
         if (widgets === undefined || widgets === {})
             return [];
         
-        list = widgets.map((widget) => <div style={{margin: '10px'}}>{this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data)}</div>)
+        list = widgets.map((widget) => <div className='widgetBox'>{this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data, widget.id)}</div>)
         return list;
     }
 
     async componentDidMount() {
         const response = await getUserWidgets(userId);
         const widgets = this.createWidgetsList(response);
-
-        console.log(widgets);
 
         this.setState({
             listWidgets: (widgets === [] || widgets === undefined ? [] : widgets)
@@ -56,7 +55,7 @@ export default class Dashboard extends Component {
     render() {
         const { listWidgets } = this.state;
         return (
-            <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', alignContent: 'space-between' }}>
+            <div className='listWidgets'>
                 { listWidgets }
             </div>
         );

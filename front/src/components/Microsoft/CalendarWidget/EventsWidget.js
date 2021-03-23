@@ -4,8 +4,9 @@ import { getCalendar } from '../../../backend/backend';
 import { MINUTE_MS } from '../../../constants/time';
 
 import Event from './Event';
+import ButtonDeleteWidget from '../../ButtonDeleteWidget';
 
-import './EventsWidget.css';
+import '../../../styles/Widget.css';
 
 class EventsService extends Component {
     constructor(props) {
@@ -56,10 +57,18 @@ class EventsService extends Component {
         const { events } = this.state;
 
         return(
-            <div id='widget' style={{ maxHeight: '590px', maxWidth: '500px'}}>
+            <div className='widget' style={{ maxHeight: '590px', maxWidth: '500px'}}>
                 <h1>Events between { this.props.startDate } and { this.props.endDate }:</h1>
-                {/* <div className='listEvents'> */}
-                <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
+                <ButtonDeleteWidget
+                    widgetId={2}
+                    serviceId={1}
+                    data={{
+                        startDate: this.props.startDate,
+                        endDate: this.props.endDate
+                    }}
+                    widgetUniqueId={this.props.id}
+                />
+                <div className='list'> 
                     { events }
                 </div>
             </div>
@@ -68,6 +77,7 @@ class EventsService extends Component {
 }
 
 EventsService.propTypes = {
+    id: PropTypes.number.isRequired,
     startDate: PropTypes.string.isRequired,
     endDate: PropTypes.string.isRequired
 };

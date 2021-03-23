@@ -4,8 +4,9 @@ import { getVideosOfFilm } from '../../../backend/backend';
 import { MINUTE_MS } from '../../../constants/time';
 
 import Video from './Video';
+import ButtonDeleteWidget from '../../ButtonDeleteWidget';
 
-import './VideosWidget.css';
+import '../../../styles/Widget.css';
 
 class VideosService extends Component {
     constructor(props) {
@@ -56,10 +57,18 @@ class VideosService extends Component {
         const { videos } = this.state;
 
         return(
-            <div id='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
+            <div className='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
                 <h1>Videos of "{ this.props.titleFilm }":</h1>
-                {/* <div className='listVideos'> */}
-                <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
+                <ButtonDeleteWidget
+                    widgetId={2}
+                    serviceId={2}
+                    data={{
+                        title: this.props.titleFilm,
+                        filmId: this.props.filmId
+                    }}
+                    widgetUniqueId={this.props.id}
+                />
+                <div className='list'>
                     { videos }
                 </div>
             </div>
@@ -68,6 +77,7 @@ class VideosService extends Component {
 }
 
 VideosService.propTypes = {
+    id: PropTypes.number.isRequired,
     filmId: PropTypes.number.isRequired,
     titleFilm: PropTypes.string.isRequired
 };

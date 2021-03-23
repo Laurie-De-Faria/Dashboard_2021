@@ -4,8 +4,9 @@ import { getSimilarFilms } from '../../../backend/backend';
 import { MINUTE_MS } from '../../../constants/time';
 
 import Film from './Film';
+import ButtonDeleteWidget from '../../ButtonDeleteWidget';
 
-import './FilmsWidget.css';
+import '../../../styles/Widget.css';
 
 class FilmsService extends Component {
     constructor(props) {
@@ -56,10 +57,18 @@ class FilmsService extends Component {
         const { films } = this.state;
 
         return(
-            <div id='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
+            <div className='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
                 <h1>Similar films of "{ this.props.titleFilm }":</h1>
-                {/* <div className='listFilms'> */}
-                <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
+                <ButtonDeleteWidget
+                    widgetId={1}
+                    serviceId={2}
+                    data={{
+                        title: this.props.titleFilm,
+                        filmId: this.props.filmId
+                    }}
+                    widgetUniqueId={this.props.id}
+                />
+                <div className='list'> 
                     { films }
                 </div>
             </div>
@@ -68,6 +77,7 @@ class FilmsService extends Component {
 }
 
 FilmsService.propTypes = {
+    id: PropTypes.number.isRequired,
     filmId: PropTypes.number.isRequired,
     titleFilm: PropTypes.string.isRequired
 };

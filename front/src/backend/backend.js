@@ -64,6 +64,20 @@ export async function addWidget(serviceId, widgetId, data) {
     })
 }
 
+export async function removeWidget(serviceId, widgetId, data, widgetUniqueId) {
+    return await callAPI(`${process.env.REACT_APP_API_URL}/services/widgets/remove`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            id: widgetUniqueId,
+            fk_user_id: userId,
+            service_id: serviceId,
+            widget_id: widgetId,
+            is_active: 1,
+            data: data,
+        }),
+    })
+}
+
 export async function getPopularFilm() {
     return await callAPI(`${process.env.REACT_APP_API_URL}/services/cinema/popular`);
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './Email.css'
+import '../../../styles/Email.css';
 
 class Email extends Component {
     render() {

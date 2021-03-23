@@ -4,8 +4,9 @@ import { getEmails } from '../../../backend/backend';
 import { MINUTE_MS } from '../../../constants/time';
 
 import Email from './Email';
+import ButtonDeleteWidget from '../../ButtonDeleteWidget';
 
-import './EmailsWidget.css';
+import '../../../styles/Widget.css';
 
 class EmailsService extends Component {
     constructor(props) {
@@ -56,10 +57,17 @@ class EmailsService extends Component {
         const { emails } = this.state;
 
         return(
-            <div id='widget' style={{ maxHeight: '550px', maxWidth: '500px'}}>
+            <div className='widget' style={{ maxHeight: '550px', maxWidth: '500px'}}>
                 <h1>Your last {this.props.number} mails:</h1>
-                {/* <div className='listEmails'> */}
-                <div style={{ overflow: 'auto', maxHeight: '500px', maxWidth: '500px'}}>
+                <ButtonDeleteWidget
+                    widgetId={1}
+                    serviceId={1}
+                    data={{
+                        number: this.props.number
+                    }}
+                    widgetUniqueId={this.props.id}
+                />
+                <div className='list'>
                     { emails }
                 </div>
             </div>
@@ -68,6 +76,7 @@ class EmailsService extends Component {
 }
 
 EmailsService.propTypes = {
+    id: PropTypes.number.isRequired,
     number: PropTypes.number.isRequired,
 };
 
