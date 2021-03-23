@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { removeWidget } from '../backend/backend';
 
+import '../styles/ButtonDelete.css';
+
 class ButtonDeleteWidget extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,7 @@ class ButtonDeleteWidget extends Component {
 
     render() {
         return(
-            <button onClick={this.delete}><i className="fa fa-trash" /></button>
+            <button className="button" onClick={this.delete}><i className="fa fa-trash" /></button>
         );
     }
 }
