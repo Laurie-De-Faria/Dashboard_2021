@@ -58,16 +58,18 @@ class EventsService extends Component {
 
         return(
             <div className='widget' style={{ maxHeight: '590px', maxWidth: '500px'}}>
-                <h1>Events between { this.props.startDate } and { this.props.endDate }:</h1>
-                <ButtonDeleteWidget
-                    widgetId={2}
-                    serviceId={1}
-                    data={{
-                        startDate: this.props.startDate,
-                        endDate: this.props.endDate
-                    }}
-                    widgetUniqueId={this.props.id}
-                />
+                <div className='header'>
+                    <h1>Events between { this.props.startDate } and { this.props.endDate }:</h1>
+                    <ButtonDeleteWidget
+                        widgetId={2}
+                        serviceId={1}
+                        data={{
+                            startDate: this.props.startDate,
+                            endDate: this.props.endDate
+                        }}
+                        widgetUniqueId={this.props.id}
+                    />
+                </div>
                 <div className='list'> 
                     { events }
                 </div>

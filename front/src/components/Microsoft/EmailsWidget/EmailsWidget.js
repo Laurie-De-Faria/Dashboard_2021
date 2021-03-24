@@ -58,15 +58,17 @@ class EmailsService extends Component {
 
         return(
             <div className='widget' style={{ maxHeight: '550px', maxWidth: '500px'}}>
-                <h1>Your last {this.props.number} mails:</h1>
-                <ButtonDeleteWidget
-                    widgetId={1}
-                    serviceId={1}
-                    data={{
-                        number: this.props.number
-                    }}
-                    widgetUniqueId={this.props.id}
-                />
+                <div className='header'>
+                    <h1>Your last {this.props.number} mails:</h1>
+                    <ButtonDeleteWidget
+                        widgetId={1}
+                        serviceId={1}
+                        data={{
+                            number: this.props.number
+                        }}
+                        widgetUniqueId={this.props.id}
+                    />
+                </div>
                 <div className='list'>
                     { emails }
                 </div>

@@ -58,16 +58,18 @@ class FilmsService extends Component {
 
         return(
             <div className='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
-                <h1>Similar films of "{ this.props.titleFilm }":</h1>
-                <ButtonDeleteWidget
-                    widgetId={1}
-                    serviceId={2}
-                    data={{
-                        title: this.props.titleFilm,
-                        filmId: this.props.filmId
-                    }}
-                    widgetUniqueId={this.props.id}
-                />
+                <div className='header'>
+                    <h1>Similar films of "{ this.props.titleFilm }":</h1>
+                    <ButtonDeleteWidget
+                        widgetId={1}
+                        serviceId={2}
+                        data={{
+                            title: this.props.titleFilm,
+                            filmId: this.props.filmId
+                        }}
+                        widgetUniqueId={this.props.id}
+                    />
+                </div>
                 <div className='list'> 
                     { films }
                 </div>

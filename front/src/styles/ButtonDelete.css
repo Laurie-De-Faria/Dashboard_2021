@@ -1,4 +1,6 @@
 .button {
     background-color: darksalmon;
     border-radius: 10px;
+    max-width: 30px;
+    max-height: 30px;
 }

@@ -58,16 +58,18 @@ class VideosService extends Component {
 
         return(
             <div className='widget' style={{ maxHeight: '570px', maxWidth: '500px'}}>
-                <h1>Videos of "{ this.props.titleFilm }":</h1>
-                <ButtonDeleteWidget
-                    widgetId={2}
-                    serviceId={2}
-                    data={{
-                        title: this.props.titleFilm,
-                        filmId: this.props.filmId
-                    }}
-                    widgetUniqueId={this.props.id}
-                />
+                <div className='header'>
+                    <h1>Videos of "{ this.props.titleFilm }":</h1>
+                    <ButtonDeleteWidget
+                        widgetId={2}
+                        serviceId={2}
+                        data={{
+                            title: this.props.titleFilm,
+                            filmId: this.props.filmId
+                        }}
+                        widgetUniqueId={this.props.id}
+                    />
+                </div>
                 <div className='list'>
                     { videos }
                 </div>
