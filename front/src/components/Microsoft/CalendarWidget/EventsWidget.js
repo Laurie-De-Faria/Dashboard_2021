@@ -68,6 +68,7 @@ class EventsService extends Component {
                             endDate: this.props.endDate
                         }}
                         widgetUniqueId={this.props.id}
+                        action={this.props.actionRemove}
                     />
                 </div>
                 <div className='list'> 
@@ -81,7 +82,8 @@ class EventsService extends Component {
 EventsService.propTypes = {
     id: PropTypes.number.isRequired,
     startDate: PropTypes.string.isRequired,
-    endDate: PropTypes.string.isRequired
+    endDate: PropTypes.string.isRequired,
+    actionRemove: PropTypes.func.isRequired
 };
 
 export default EventsService;

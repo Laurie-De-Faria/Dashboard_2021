@@ -17,17 +17,40 @@ export default class Dashboard extends Component {
         };
         this.createWidgetsList = this.createWidgetsList.bind(this);
         this.getWidget = this.getWidget.bind(this);
+        this.removeWidget = this.removeWidget.bind(this);
     }
 
-    getWidget(serviceId, widgetId, isActive, data, id) {
+    removeWidget(id) {
+        const widget = document.getElementById(id);
+        let index = -1;
+        const list = this.state.listWidgets;
+
+        for (let i = 0; i < list.length; i++) {
+            const element = list[i];
+            if (element.props.id === id) {
+                index = i;
+                break;
+            }
+        }
+        
+        if (index > -1) {
+            list.splice(index, 1);
+
+            this.setState({
+                listWidgets: list
+            });
+        }
+    }
+
+    getWidget(serviceId, widgetId, isActive, data, id, actionRemove) {
         if (isActive !== 1) {
             return null;
         }
         switch(serviceId) {
             case 1:
-                return setupOutlookWidget(widgetId, data, id);
+                return setupOutlookWidget(widgetId, data, id, actionRemove);
             case 2:
-                return setupCinemaWidget(widgetId, data, id);
+                return setupCinemaWidget(widgetId, data, id, actionRemove);
             default:
                 return null;
         }
@@ -39,7 +62,7 @@ export default class Dashboard extends Component {
         if (widgets === undefined || widgets === {})
             return [];
         
-        list = widgets.map((widget) => <div className='widgetBox'>{this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data, widget.id)}</div>)
+        list = widgets.map((widget) => <div id={widget.id} className='widgetBox'>{this.getWidget(widget.service_id, widget.widget_id, widget.is_active, widget.data, widget.id, this.removeWidget)}</div>)
         return list;
     }
 

@@ -12,7 +12,9 @@ class ButtonDeleteWidget extends Component {
     }
 
     async delete() {
-        console.log(`delete => ${this.props.widgetId} ${this.props.serviceId} ${JSON.stringify(this.props.data)}`);
+        if (this.props.action !== undefined) {
+            this.props.action(this.props.widgetUniqueId)
+        }
         await removeWidget(this.props.serviceId, this.props.widgetId, this.props.data, this.props.widgetUniqueId);
     }
 
@@ -28,6 +30,7 @@ ButtonDeleteWidget.propTypes = {
     widgetId: PropTypes.number.isRequired,
     serviceId: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired,
+    action: PropTypes.func
 };
 
 export default ButtonDeleteWidget;

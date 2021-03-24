@@ -67,6 +67,7 @@ class EmailsService extends Component {
                             number: this.props.number
                         }}
                         widgetUniqueId={this.props.id}
+                        action={this.props.actionRemove}
                     />
                 </div>
                 <div className='list'>
@@ -80,6 +81,7 @@ class EmailsService extends Component {
 EmailsService.propTypes = {
     id: PropTypes.number.isRequired,
     number: PropTypes.number.isRequired,
+    actionRemove: PropTypes.func.isRequired
 };
 
 export default EmailsService;

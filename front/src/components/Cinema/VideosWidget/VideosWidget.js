@@ -68,6 +68,7 @@ class VideosService extends Component {
                             filmId: this.props.filmId
                         }}
                         widgetUniqueId={this.props.id}
+                        action={this.props.actionRemove}
                     />
                 </div>
                 <div className='list'>
@@ -81,7 +82,8 @@ class VideosService extends Component {
 VideosService.propTypes = {
     id: PropTypes.number.isRequired,
     filmId: PropTypes.number.isRequired,
-    titleFilm: PropTypes.string.isRequired
+    titleFilm: PropTypes.string.isRequired,
+    actionRemove: PropTypes.func.isRequired
 };
 
 export default VideosService;
