@@ -5,15 +5,19 @@ import CalendarWidgetForm from '../../components/Form/CalendarWidgetForm';
 import SimilarFilmsWidgetForm from '../../components/Form/SimilarFilmsWidgetForm';
 import VideosOfFilmWidgetForm from '../../components/Form/VideosOfFilmWidgetForm';
 
+import '../../styles/CreateWidgetPage.css';
+
 class CreateWidgetPage extends Component {
     render() {
         return (
-            <div>
-                <h1>Create a widget:</h1>
-                <EmailsWidgetForm />
-                <CalendarWidgetForm />
-                <SimilarFilmsWidgetForm />
-                <VideosOfFilmWidgetForm />
+            <div className='pageCreate'>
+                <h1 className='title'>Create a widget:</h1>
+                <ul>
+                    <li><EmailsWidgetForm /></li>
+                    <li><CalendarWidgetForm /></li>
+                    <li><SimilarFilmsWidgetForm /></li>
+                    <li><VideosOfFilmWidgetForm /></li>
+                </ul>
             </div>
         );
     }

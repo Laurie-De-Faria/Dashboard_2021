@@ -21,7 +21,6 @@ export default class Dashboard extends Component {
     }
 
     removeWidget(id) {
-        const widget = document.getElementById(id);
         let index = -1;
         const list = this.state.listWidgets;
 
