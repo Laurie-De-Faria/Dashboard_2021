@@ -71,7 +71,7 @@ class SimilarFilmsWidgetForm extends Component {
         
         list = films.map((film) => <option value={`${film.filmId}`}>{ film.title }</option>);
         this.setState({
-            id: films[0].filmId
+            filmId: films[0].filmId
         });
         return list;
     }
